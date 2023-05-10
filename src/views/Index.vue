@@ -1,40 +1,51 @@
 <template>
-<div>
-    <el-button type="primary" size="default" @click="increment">{{ state.count }}</el-button>
-    <el-button type="success" @click="changeName">{{ fullName }}</el-button>
-</div>
+  <div>
+    <el-button type="primary" size="default" @click="addSum(+1)">+1</el-button>
+
+    <p>{{ book.name }}</p>
+    <p>{{ book.sum }}</p>
+    <p>ref: {{ year }}</p>
+    <p>ref对象 {{ user.age }}</p>
+    <p>computed {{ publishedBooksMessage }}</p>
+    <HelloWorld msg="测试" title="萨达萨达啊实打实的撒阿松大" @change-msg="changeMsg"></HelloWorld>
+  </div>
 </template>
 
 <script setup lang="ts">
-// import { $ref } from "vue/macros";
-import { reactive, ref, computed } from 'vue';
-
-// let count = $ref(0)
-// function increment() {
-//     count++;
-// }
-interface State {
-    count: number
+import HelloWorld from '../components/HelloWorld.vue';
+import { ref, reactive, computed, watch } from "vue";
+interface Book {
+  name?: string;
+  sum: number;
 }
-let state:State = reactive({count: 0});
-let firstName = ref<string>('张');
-let secondName = ref<string>('三');
-const fullName = computed<string>({
-    get() {
-        return `${firstName.value} ${secondName.value}`
-    },
-    set(newwVal) {
-        [firstName.value, secondName.value] = newwVal.split(' ')
-    }
+let book: Book = reactive({ name: "测试", sum: 0 });
+const year = ref(2023);
+let user = ref({ name: "张三", age: 12 });
+function addSum(num: number) {
+  let age = user.value.age;
+  age += num;
+  book.sum += num;
+  year.value += num;
+  user.value = { name: "张三", age: age };
+}
+interface Auth {
+  name: string;
+  books: string[];
+}
+let auth: Auth = reactive({
+  name: "张三",
+  books: ["sada sa", "sasadfdf", "sadsa 22", "fer"],
+});
+let publishedBooksMessage = computed(() => {
+  return auth.books.length > 0;
+});
+watch(year, (newVal) => {
+  console.log('watch', newVal);
 })
-function increment() {
-    state.count ++;
-}
-function changeName() {
-    fullName.value = '李 四'
+
+function changeMsg(params: string) {
+  console.log('调用父组件的方法，并传了参数', params);
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
