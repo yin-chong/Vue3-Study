@@ -13,7 +13,7 @@ import router from '../router/index';
 const menus = reactive(
   [
     { id: 1, name: 'Vue3基础', url: 'base-study', icon: 'MilkTea' },
-    { id: 2, name: '基础学习', url: 'base-study', icon: 'MilkTea' },
+    { id: 2, name: '表格封装', url: 'table', icon: 'MilkTea' },
     { id: 3, name: '基础学习', url: 'base-study', icon: 'MilkTea' },
     { id: 4, name: '基础学习', url: 'base-study', icon: 'MilkTea' },
     { id: 5, name: '基础学习', url: 'base-study', icon: 'MilkTea' },
