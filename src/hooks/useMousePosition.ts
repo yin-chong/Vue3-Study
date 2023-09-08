@@ -16,7 +16,7 @@ function useMousePosition():MousePosition {
         addEventListener('click', updateMouse)
     })
     onUnmounted(() => {
-        addEventListener('click', updateMouse)
+        removeEventListener('click', updateMouse)
     })
     return { x, y }
 }
