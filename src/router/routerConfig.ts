@@ -20,4 +20,16 @@ export default [
     name: "table",
     component: () => import("../views/table.vue"),
   },
+  // Hooks 鼠标事件监听
+  {
+    path: "/mouse",
+    name: "mouse",
+    component: () => import("../views/mouse.vue"),
+  },
+  // 手写promise
+  {
+    path: "/promise",
+    name: "promise",
+    component: () => import("../views/promise.vue"),
+  },
 ];
