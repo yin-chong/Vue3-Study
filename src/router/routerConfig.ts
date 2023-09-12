@@ -32,4 +32,10 @@ export default [
     name: "promise",
     component: () => import("../views/promise.vue"),
   },
+  // 数组方法
+  {
+    path: "/array",
+    name: "array",
+    component: () => import("../views/array.vue"),
+  },
 ];
