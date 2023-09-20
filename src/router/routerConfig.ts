@@ -38,4 +38,10 @@ export default [
     name: "array",
     component: () => import("../views/array.vue"),
   },
+  // 笔试demo
+  {
+    path: "/demo",
+    name: "demo",
+    component: () => import("../views/demo.vue"),
+  },
 ];
