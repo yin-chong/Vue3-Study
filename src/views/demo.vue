@@ -739,12 +739,6 @@ onBeforeUnmount(() => {
     userType: userType
   };
   window.sessionStorage.setItem('record', JSON.stringify(record));
-  // ElMessage({
-  //   showClose: true,
-  //   message: `userType: ${userType} 进入时间: ${start} 离开时间: ${end}`,
-  //   type: 'success',
-  //   duration: 0
-  // })
 })
 </script>
 

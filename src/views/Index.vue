@@ -7,7 +7,7 @@
     </div>
   </div>
   
-  <el-row :gutter="20">
+  <el-row :gutter="20" style="width: 100%;">
     <el-col :span="12" :offset="0">
       <el-input v-model="userType" placeholder="" size="normal" disabled>
         <template #prepend>当前用户:</template>

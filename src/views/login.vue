@@ -3,18 +3,17 @@
         <div class="login-content">
             <el-form
               ref="ruleFormRef"
-              :model="ruleForm"
+              :model="userInfo"
               :rules="rules"
               label-width="120px"
-              class="demo-ruleForm"
               :size="formSize"
               status-icon
             >
               <el-form-item label="用户名" prop="name">
-                <el-input v-model="ruleForm.name" style="width: 400px;" />
+                <el-input v-model="userInfo.name" style="width: 400px;" />
               </el-form-item>
               <el-form-item label="密码" prop="password">
-                <el-input v-model="ruleForm.password" type="password" style="width: 400px;" />
+                <el-input v-model="userInfo.password" type="password" style="width: 400px;" />
               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="submitForm(ruleFormRef)">
@@ -39,7 +38,7 @@
   
   const formSize = ref('default')
   const ruleFormRef = ref<FormInstance>()
-  const ruleForm = reactive<RuleForm>({
+  const userInfo = reactive<RuleForm>({
     name: '',
     password: '',
   })
@@ -57,9 +56,9 @@
     if (!formEl) return
     await formEl.validate((valid, fields) => {
       if (valid) {
-        const { name, password } = ruleForm;
+        const { name, password } = userInfo;
         if(name == 'user' && password == '123456') {
-            window.sessionStorage.setItem('userInfo', JSON.stringify(ruleForm));
+            window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
             router.push({
                 name: 'index',
                 query: {
@@ -67,7 +66,7 @@
                 }
             })
         } else if(name == 'manage' && password == '123456') {
-            window.sessionStorage.setItem('userInfo', JSON.stringify(ruleForm));
+            window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
             router.push({
                 name: 'index',
                 query: {

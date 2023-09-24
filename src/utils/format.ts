@@ -2,7 +2,8 @@
  * 时间格式化
  */
 interface FORMATOBJ {
-  'YYYYMMDD hh:mm:ss': string
+  'YYYYMMDD hh:mm:ss': string,
+  [key: string]: any // 添加一个索引签名，表示可以使用任意字符串作为键
 }
 function formatTime(time: Date, type: string = 'YYYYMMDD hh:mm:ss') {
     let year = time.getFullYear();

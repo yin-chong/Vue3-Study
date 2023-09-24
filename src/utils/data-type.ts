@@ -1,3 +1,4 @@
+export {};
 const str: string = '字符串';
 const num: number = 1111;
 const a: number | string = 1111;
