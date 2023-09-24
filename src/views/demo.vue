@@ -141,9 +141,9 @@ const files: Array<FILE> = [
 ];
 
 // 文件下载
-const route = useRoute();
 const startTime = new Date();
 const start = formatTime(startTime);
+const route = useRoute();
 const { userType } = route.query || {};
 // console.log(startTime)
 function downloadFile(name: string) {
@@ -538,8 +538,15 @@ function renderCanvas3(yData1: Array<number>, yData2: Array<number>, xData: Arra
       },
     ],
   };
-
   chart.setOption(options);
+  chart.on('click', function (params) {
+    ElMessage({
+      showClose: true,
+      message: `您点击了柱状图, x轴为${params.name} 值为${params.value}`,
+      type: 'success',
+      duration: 0
+    })
+  });
 }
 // Dailly ooc Summary 图表渲染
 const xData = ['05-29', '03-12', '03-14', '03-09', '03-09', '04-19', '04-04', '03-15', '05-28', '04-22', '03-29', '04-01', '05-09', '05-28', '05-08', '06-18', '06-17', '06-16', '07-09', '07-06', '06-26', '06-28', '07-06', '07-18', '06-28', '06-29', '07-20'];
@@ -726,12 +733,18 @@ async function renderCanvas4() {
 onBeforeUnmount(() => {
   const endTime = new Date();
   const end = formatTime(endTime);
-  ElMessage({
-    showClose: true,
-    message: `userType: ${userType} 进入时间: ${start} 离开时间: ${end}`,
-    type: 'success',
-    duration: 0
-  })
+  const record = {
+    start: start,
+    end: end,
+    userType: userType
+  };
+  window.sessionStorage.setItem('record', JSON.stringify(record));
+  // ElMessage({
+  //   showClose: true,
+  //   message: `userType: ${userType} 进入时间: ${start} 离开时间: ${end}`,
+  //   type: 'success',
+  //   duration: 0
+  // })
 })
 </script>
 
