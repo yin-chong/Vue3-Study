@@ -131,13 +131,13 @@ interface FILE {
   path: string;
 }
 const files: Array<FILE> = [
-  { name: "GoldenCham_data", path: "/public/GoldenCham_data" },
-  { name: "GoldenCham", path: "/public/GoldenCham" },
-  { name: "G2G", path: "/public/G2G" },
-  { name: "OER", path: "/public/OER" },
-  { name: "OOC", path: "/public/OOC" },
-  { name: "PM", path: "/public/PM" },
-  { name: "seasoning", path: "/public/seasoning" },
+  { name: "GoldenCham_data", path: "/GoldenCham_data" },
+  { name: "GoldenCham", path: "/GoldenCham" },
+  { name: "G2G", path: "/G2G" },
+  { name: "OER", path: "/OER" },
+  { name: "OOC", path: "/OOC" },
+  { name: "PM", path: "/PM" },
+  { name: "seasoning", path: "/seasoning" },
 ];
 
 // 文件下载
@@ -157,7 +157,7 @@ onMounted(() => {
 });
 // TEL Intelligent Etch Dashboard 图表数据获取
 async function getCanvas1Data() {
-  const arr = await getFileData("/public/GoldenCham_data.csv");
+  const arr = await getFileData("/GoldenCham_data.csv");
   renderCanvas1(arr);
 }
 // TEL Intelligent Etch Dashboard 图表渲染
@@ -281,13 +281,13 @@ function renderCanvas1(arr: Array<any>) {
 }
 // GoldenCham 数据获取
 let GoldenChamData = ref([]);
-getFileData("/public/GoldenCham.csv").then(res => {
+getFileData("/GoldenCham.csv").then(res => {
   GoldenChamData.value = res[1];
 })
 // G2G 数据获取
 let G2GData = ref([]);
 async function getCanvas2Data() {
-  let res = await getFileData("/public/G2G.csv");
+  let res = await getFileData("/G2G.csv");
   const arr = res[1];
   const val1 = (Number(arr[2]) * 100).toFixed(1);
   const val2 = (Number(arr[4]) * 100).toFixed(1);
@@ -400,7 +400,7 @@ function renderCanvas2() {
 }
 // OER 数据获取
 async function getCanvas3Data() {
-  const arr = await getFileData("/public/OER.csv");
+  const arr = await getFileData("/OER.csv");
   let yData1: Array<number> = [];
   let yData2: Array<number> = [];
   let xData: Array<string> = [];
